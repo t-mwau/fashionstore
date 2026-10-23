@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanWear | Fashion Store</title>
+
+  <!-- Bootstrap CSS (served locally from the project folder) -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top border-bottom">
+    <div class="container py-2">
+      <a class="navbar-brand fw-bold fs-3" href="#">
+        URBAN<span class="brand-accent">WEAR.</span>
+      </a>
+
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categories">Collections</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="btn btn-dark rounded-pill px-4"
+                data-bs-toggle="modal" data-bs-target="#cartModal">
+          Cart (<span id="cartCount" aria-live="polite">0</span>)
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="store-marquee" role="region" aria-label="UrbanWear: shop by category">
+    <div class="store-marquee-track" aria-hidden="true">
+      <span>URBANWEAR <span class="marquee-divider">•</span> SHOP BY CATEGORY <span class="marquee-divider">•</span> CLOTHING <span class="marquee-divider">•</span> SHOES <span class="marquee-divider">•</span> ACCESSORIES</span>
+      <span>URBANWEAR <span class="marquee-divider">•</span> SHOP BY CATEGORY <span class="marquee-divider">•</span> CLOTHING <span class="marquee-divider">•</span> SHOES <span class="marquee-divider">•</span> ACCESSORIES</span>
+    </div>
+    <p class="visually-hidden">UrbanWear. Shop by category: clothing, shoes and accessories.</p>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <p class="text-uppercase fw-semibold">Local styles, easy shopping</p>
+        <h1>Dress the way<br>you <span>feel.</span></h1>
+        <p class="hero-description">
+          Browse the photographed collection of clothing, shoes and accessories.
+        </p>
+        <a href="#shop" class="btn btn-dark btn-lg rounded-pill px-5">
+          Shop Collection
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-4 border-bottom">
+    <div class="container">
+      <div class="row g-3 text-center">
+        <div class="col-6 col-md-4">
+          <span class="benefit-icon" aria-hidden="true">01</span>
+          <p class="mb-0 mt-1 fw-semibold">Reliable Delivery</p>
+        </div>
+        <div class="col-6 col-md-4">
+          <span class="benefit-icon" aria-hidden="true">02</span>
+          <p class="mb-0 mt-1 fw-semibold">Secure Shopping</p>
+        </div>
+        <div class="col-12 col-md-4">
+          <span class="benefit-icon" aria-hidden="true">03</span>
+          <p class="mb-0 mt-1 fw-semibold">Easy Returns</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="container py-5" id="categories">
+    <div class="section-heading">
+      <p class="text-uppercase small fw-semibold">Find your style</p>
+      <h2>Shop by Category</h2>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 justify-content-center mt-4">
+      <button class="btn category-btn active" data-category="All" aria-pressed="true">All Items</button>
+      <button class="btn category-btn" data-category="Clothing" aria-pressed="false">Clothing</button>
+      <button class="btn category-btn" data-category="Shoes" aria-pressed="false">Shoes</button>
+      <button class="btn category-btn" data-category="Accessories" aria-pressed="false">Accessories</button>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="container pb-5" id="shop">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <p class="text-uppercase small fw-semibold mb-1">Our selection</p>
+        <h2 class="mb-0">Clothing, Shoes &amp; Accessories</h2>
+      </div>
+
+      <input type="search" id="searchInput"
+             class="form-control search-box"
+             placeholder="Search all products..."
+             aria-label="Search all products">
+    </div>
+
+    <p class="text-secondary mb-3" id="productResults" role="status" aria-live="polite"></p>
+    <div class="row g-4" id="productGrid"></div>
+    <div id="storeMessage" class="alert alert-success py-2" role="status" aria-live="polite" hidden></div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter py-5">
+    <div class="container text-center">
+      <h2>Stay in Style</h2>
+      <p>Get updates on new arrivals and exclusive offers.</p>
+      <form id="newsletterForm"
+            class="d-flex flex-column flex-sm-row gap-2 mx-auto newsletter-form">
+        <label class="visually-hidden" for="newsletterEmail">Your email address</label>
+        <input type="email" id="newsletterEmail" class="form-control"
+               placeholder="Your email address"
+               aria-label="Your email address" required>
+        <button class="btn btn-dark px-4">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h3 class="fw-bold">URBANWEAR.</h3>
+          <p class="text-white-50">
+            Browse our photographed collection of clothing, footwear and accessories.
+          </p>
+        </div>
+        <div class="col-md-3">
+          <h6>Quick Links</h6>
+          <a href="#home" class="footer-link">Home</a>
+          <a href="#shop" class="footer-link">Shop</a>
+          <a href="#categories" class="footer-link">Collections</a>
+        </div>
+        <div class="col-md-3">
+          <h6>Contact</h6>
+          <a class="footer-link" href="mailto:timmulwa123@gmail.com">timmulwa123@gmail.com</a>
+          <a class="footer-link" href="tel:+254114077400">+254 114 077 400</a>
+          <p class="text-white-50">Kenya</p>
+        </div>
+      </div>
+      <hr>
+      <p class="text-center text-white-50 mb-0">
+        &copy; <span id="year"></span> UrbanWear. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Shopping Cart Modal -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="cartModalTitle">Your Shopping Cart</h2>
+          <button type="button" class="btn-close"
+                  data-bs-dismiss="modal" aria-label="Close cart"></button>
+        </div>
+        <div class="modal-body" id="cartItems"></div>
+        <div class="modal-footer d-block">
+          <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+            <span>Total</span>
+            <span id="cartTotal">KSh 0</span>
+          </div>
+          <button class="btn btn-dark w-100" id="checkoutBtn" disabled>
+            Continue to M-Pesa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="checkoutModal" tabindex="-1"
+       aria-labelledby="checkoutModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form id="mpesaForm">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="checkoutModalTitle">M-Pesa sandbox checkout</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Test order total: <strong id="checkoutAmount"></strong></p>
+            <p class="small text-secondary">Use a Safaricom sandbox test number. This test flow does not charge real money. Do not enter an M-Pesa PIN on this website.</p>
+            <label class="form-label" for="mpesaPhone">M-Pesa test phone number</label>
+            <input class="form-control" type="tel" id="mpesaPhone"
+                   autocomplete="tel" inputmode="tel"
+                   placeholder="07XXXXXXXX or 2547XXXXXXXX"
+                   pattern="(\+?254|0)(7|1)[0-9]{8}" required>
+            <div id="checkoutMessage" class="alert alert-info mt-3 mb-0"
+                 role="status" aria-live="polite" hidden></div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-dark w-100" id="mpesaSubmit">
+              Send M-Pesa sandbox prompt
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript (served locally from the project folder) -->
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
